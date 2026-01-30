@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guido Navarro | Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-content">
+      <a class="logo" href="#hero" id="brand"></a>
+
+      <button id="mobile-toggle" class="icon-btn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul id="nav-links" class="nav-links"></ul>
+
+      <div class="nav-actions">
+        <button id="lang-toggle" class="lang-btn" type="button" aria-label="Toggle language"></button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <ul id="mobile-links" class="mobile-links"></ul>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <header id="hero" class="section hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="pill" id="target-pill"></div>
+
+          <h1 id="hero-name"></h1>
+          <h2 id="hero-role"></h2>
+          <p id="hero-summary" class="muted"></p>
+
+          <ul id="hero-highlights" class="bullets"></ul>
+
+          <div class="hero-actions">
+            <a id="btn-cv" href="#" class="btn-primary" download></a>
+            <div id="social-icons" class="socials"></div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile-card">
+            <img id="profile-img" src="" alt="Profile picture" />
+            <div class="profile-meta">
+              <div class="profile-name" id="profile-name"></div>
+              <div class="profile-sub muted" id="profile-sub"></div>
+            </div>
+          </div>
+
+          <section class="mini-card">
+            <h3 class="mini-title" id="title-quickfacts"></h3>
+            <div class="facts-grid" id="quick-facts"></div>
+          </section>
+        </div>
+      </div>
+    </header>
+
+    <!-- INTERESTS (moved to top) -->
+    <section id="interests" class="section">
+      <h3 class="section-title" id="title-interests"></h3>
+      <div id="list-interests" class="tag-cloud centered"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h3 class="section-title" id="title-skills"></h3>
+      <div id="skills-groups" class="skills-groups"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h3 class="section-title" id="title-exp"></h3>
+      <div id="list-experience" class="timeline"></div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section id="activities" class="section">
+      <h3 class="section-title" id="title-activities"></h3>
+      <div id="list-activities" class="timeline"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h3 class="section-title" id="title-projects"></h3>
+      <div id="list-projects" class="cards-grid"></div>
+    </section>
+
+    <!-- CERTS -->
+    <section id="certs" class="section">
+      <h3 class="section-title" id="title-certs"></h3>
+      <div id="list-certs" class="cert-grid"></div>
+    </section>
+
+    <!-- CTFS (FULL WIDTH) -->
+    <section id="ctfs" class="section">
+      <h3 class="section-title" id="title-ctfs"></h3>
+      <div id="list-ctfs" class="ctf-grid"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h3 class="section-title" id="title-edu"></h3>
+      <div id="list-education" class="edu-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-brand" id="footer-brand"></div>
+        <p class="muted">&copy; <span id="year"></span> <span id="footer-name"></span></p>
+      </div>
+
+      <div class="footer-right" id="footer-contact"></div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" class="back-to-top hidden" type="button" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
