@@ -13,11 +13,13 @@
     "github": "https://github.com/Alpasec"
   },
   "stats": {
-    "labs_solved": "150+",
     "availability": "Open to Work",
     "location": "Lima, Perú",
     "target_role": "Junior / AppSec / InfoSec / Trainee",
-    "spoken_languages": ["Español (Nativo)", "Inglés (Intermedio/Avanzado)"]
+    "spoken_languages": {
+      "es": ["Español (Nativo)", "Inglés (Avanzado)"],
+      "en": ["Spanish (Native)", "English (Advanced)"]
+    }
   },
   "es": {
     "ui": {
@@ -40,17 +42,18 @@
         "view_demo": "Demo",
         "view_more": "Ver más",
         "open_link": "Abrir",
-        "back_to_top": "Arriba"
+        "back_to_top": "Arriba",
+        "cert": "Certificado",
+        "writeup": "Writeup"
       },
       "labels": {
         "target_role": "Rol objetivo",
-        "labs_solved": "Labs resueltos",
         "availability": "Disponibilidad",
         "location": "Ubicación",
         "spoken_languages": "Idiomas"
       },
       "section_titles": {
-        "quick_facts": "Datos clave",
+        "quick_facts": "Detalles",
         "interests": "Intereses Profesionales",
         "skills": "Skills & Herramientas",
         "experience": "Experiencia",
@@ -59,23 +62,39 @@
         "certs": "Certificaciones",
         "ctfs": "CTFs & Logros",
         "education": "Educación"
+      },
+      "ctf": {
+        "mode_individual": "Individual",
+        "mode_team": "Equipo",
+        "place": "Puesto"
       }
     },
     "hero": {
       "name": "Guido Joel Navarro Vasquez",
-      "role": "Ingeniero de Ciberseguridad & Backend Dev",
-      "summary": "Soy estudiante de Ingeniería de Sistemas de Información en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente en 9.º ciclo, enfocado en ciberseguridad con interés principal en seguridad ofensiva, AppSec y gobernanza/riesgos (GRC). Tengo experiencia práctica en desarrollo backend con Node.js/TypeScript y apoyo a iniciativas alineadas a ISO 27001, combinando análisis técnico con documentación clara y comunicación con equipos. En paralelo, participo activamente en CTFs y laboratorios, creo contenido técnico y realizo mentoring. Apunto a roles SOC/AppSec/GRC donde pueda aportar pensamiento analítico, disciplina y habilidades blandas como trabajo en equipo y capacidad para explicar temas complejos con claridad.",
+      "role": "Ingeniería de Sistemas de Información & Backend Dev",
+      "summary": "Soy estudiante de Ingeniería de Sistemas de Información en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente en 9.º ciclo, enfocado en ciberseguridad con interés principal en seguridad ofensiva, AppSec y gobernanza/riesgos (GRC). Tengo experiencia práctica en desarrollo backend con Node.js/TypeScript, integraciones de pasarelas de pago y apoyo a iniciativas alineadas a ISO 27001, combinando análisis técnico con documentación clara y comunicación con equipos. En paralelo, participo activamente en CTFs, realizo mentoring y mantengo práctica constante en laboratorios. Apunto a roles SOC/AppSec/GRC donde pueda aportar pensamiento analítico, disciplina y habilidades blandas como trabajo en equipo y capacidad para explicar temas complejos con claridad.",
       "highlights": [
-        "Enfoque: ofensiva + desarrollo seguro",
-        "CTFs / Labs constantes (HTB, CTFTime)",
-        "Backend (Node.js/TS) + soporte ISO 27001"
+        "Enfoque: ofensiva + desarrollo seguro (AppSec)",
+        "Backend: APIs REST, JWT, arquitectura y buenas prácticas",
+        "Pasarelas de pago: integración, validaciones e idempotencia",
+        "Cloud/Infra: Docker, redes, hardening y servicios seguros",
+        "GRC básico: soporte ISO 27001, evidencias y controles",
+        "CTFs competitivos y participación activa en comunidad"
       ]
     },
     "skills": {
       "groups": [
         {
           "label": "Frameworks & Tecnologías",
-          "items": ["Spring Boot", ".NET", "Angular", "Express.js", "Flask", "Entity Framework", "DDD", "REST APIs"]
+          "items": ["Spring Boot", ".NET", "Angular", "Express.js", "Flask", "Entity Framework", "DDD", "REST APIs", "JWT"]
+        },
+        {
+          "label": "Seguridad Ofensiva",
+          "items": ["Pentesting web", "Pentesting de infraestructura", "SQLi", "XSS", "LFI", "SSRF", "IDOR", "RCE", "PrivEsc", "Pivoting", "Post-explotación", "Análisis de configuraciones inseguras"]
+        },
+        {
+          "label": "AppSec",
+          "items": ["OWASP Top 10", "Vulnerability reporting", "Risk/Severity", "Hardening básico de aplicaciones", "Controles de seguridad en APIs"]
         },
         {
           "label": "Sistemas & Entornos",
@@ -88,6 +107,10 @@
         {
           "label": "Cloud & DevSecOps",
           "items": ["AWS", "Azure", "Terraform", "CI/CD (GitHub Actions)", "Seguridad en contenedores", "Controles nativos cloud"]
+        },
+        {
+          "label": "Excel / Sheets & Documentación",
+          "items": ["Tablas dinámicas", "Filtros", "Validación de datos", "XLOOKUP/VLOOKUP", "Seguimiento de riesgos/hallazgos", "Word/Docs", "PowerPoint/Slides"]
         }
       ]
     },
@@ -98,11 +121,12 @@
         "period": "Jun 2025 - Ene 2026",
         "bullets": [
           "Desarrollo backend con Node.js/TypeScript y APIs REST.",
+          "Integración de pasarelas de pago: flujos de transacción, validaciones, manejo de errores e idempotencia.",
           "Soporte a iniciativas alineadas a ISO 27001 (evidencias, controles, documentación).",
           "Trabajo colaborativo con Git/GitHub, CI/CD y contenedores.",
           "PoC de XDR: definición de criterios (cobertura/detección/falsos positivos), pruebas controladas y reporte comparativo para decisión técnica."
         ],
-        "tags": ["Backend", "Node.js", "ISO 27001", "DDD"]
+        "tags": ["Backend", "Node.js", "Pagos", "ISO 27001", "DDD"]
       }
     ],
     "activities": [
@@ -154,8 +178,8 @@
       {
         "title": "StyleCheck",
         "year": "2023",
-        "tech": ["HTML", "CSS", "JavaScript"],
-        "desc": "Proyecto desarrollado con Spring Boot, Angular y PostgreSQL, con autenticación basada en JWT. La aplicación web permite simular distintos estilos de peinado a partir de la foto de un rostro.",
+        "tech": ["Spring Boot", "Angular", "PostgreSQL", "JWT"],
+        "desc": "Aplicación web con autenticación JWT que simula estilos de peinado a partir de la foto de un rostro. Backend en Spring Boot, frontend en Angular y base de datos en PostgreSQL.",
         "status": "Finalizado",
         "image": "img/projects/stylecheck_front.png",
         "links": {
@@ -168,24 +192,23 @@
     ],
     "certs": [
       { "name": "Certified Red Team Analyst", "issuer": "CyberWarFare Labs", "date": "2026-01", "image": "img/certs/crta.png", "link": "https://labs.cyberwarfare.live/credential/achievement/6957191de40b6b5c463d2106" },
-      { "name": "Multi-Cloud Red Teaming Analyst", "issuer": "CyberWarFare Labs", "date":"2025-12", "image": "img/certs/mcrta.png", "link": "https://labs.cyberwarfare.live/credential/achievement/694e305a10dcee13b435323e" },
+      { "name": "Multi-Cloud Red Teaming Analyst", "issuer": "CyberWarFare Labs", "date": "2025-12", "image": "img/certs/mcrta.png", "link": "https://labs.cyberwarfare.live/credential/achievement/694e305a10dcee13b435323e" },
       { "name": "Junior Penetration Tester (PT1)", "issuer": "TryHackMe", "date": "2025-08", "image": "img/certs/pt1.png", "link": "https://assets.tryhackme.com/certification-certificate/68a93c613d7aff6e4bdedd82.pdf" },
       { "name": "Certified Professional Penetration Tester", "issuer": "INE Security", "date": "2025-06", "image": "img/certs/ecppt.svg", "link": "https://certs.ine.com/fcacbb80-bdd7-41ed-a98b-8803b0483dd9?record_view=true" },
       { "name": "INE Certified Cloud Associate", "issuer": "INE Security", "date": "2025-03", "image": "img/certs/icca.webp", "link": "https://certs.ine.com/f65a977c-8c8b-4357-97ba-eabcb7301a4a" },
       { "name": "Junior Penetration Tester", "issuer": "INE Security", "date": "2025-02", "image": "img/certs/ejpt.svg", "link": "https://certs.ine.com/2f67cf53-cf23-47ef-a776-75b662d775bc" },
-      { "name": "Bootcamp AUDITOR ISO 27001", "issuer": "Hackermentor", "date": "2024-12", "image": "img/certs/hackermentor.jpg", "link": "https://credsverse.com/credentials/dde301ad-a676-4d46-8101-3dd5265f9eca" },
       { "name": "Ciberseguridad: CyberSOC (C|CS)", "issuer": "CTIC UNI", "date": "2025-02", "image": "img/certs/otiuni.jpg", "link": "https://certificados.uni.edu.pe/verificador/search.php?cert_id=cert_1f451a6461c5fc24f2efd908fae2b8cf" },
+      { "name": "Bootcamp AUDITOR ISO 27001", "issuer": "Hackermentor", "date": "2024-12", "image": "img/certs/hackermentor.jpg", "link": "https://credsverse.com/credentials/dde301ad-a676-4d46-8101-3dd5265f9eca" },
       { "name": "Ciberseguridad: Ethical Hacking", "issuer": "CTIC UNI", "date": "2024-11", "image": "img/certs/otiuni.jpg", "link": "#" },
       { "name": "Ciberseguridad: Pentesting contra aplicaciones web", "issuer": "CTIC UNI", "date": "2024-11", "image": "img/certs/otiuni.jpg", "link": "#" },
       { "name": "FCE Cambridge English Level 1 Certificate", "issuer": "Cambridge English", "date": "2020-01", "image": "img/certs/cambridge.webp", "link": "https://drive.google.com/file/d/1q5wVjKNpPMBs2FtyOO5Uz0qF_KNgICaa/view?usp=sharing" }
-
     ],
     "ctfs": [
       {
         "name": "Fluid Attacks Reto Latam 2026",
         "year": "Enero 2026",
         "platform": "Fluid Attacks",
-        "rank": "Puesto 51",
+        "rank": "Individual - Puesto 51",
         "event_link": "https://www.linkedin.com/posts/gjnv_glad-to-share-my-result-from-the-fluid-attacks-activity-7421321157439557632-OffR",
         "cert_link": "",
         "writeup_link": ""
@@ -194,7 +217,7 @@
         "name": "University CTF 2025: Tinsel Trouble",
         "year": "Diciembre 2025",
         "platform": "Hack The Box",
-        "rank": "Puesto 18",
+        "rank": "En equipo - Puesto 18",
         "event_link": "https://ctf.hackthebox.com/event/details/university-ctf-2025-tinsel-trouble-2993",
         "cert_link": "https://drive.google.com/file/d/19yzmcOqDTM_MaLwo9A02mF0G_mPrOmsk/view?usp=sharing",
         "writeup_link": ""
@@ -203,7 +226,7 @@
         "name": "CCCTF 2025",
         "year": "Noviembre 2025",
         "platform": "Centro Cultural de Ciberseguridad UNI",
-        "rank": "Puesto 4",
+        "rank": "En equipo - Puesto 4",
         "event_link": "https://www.linkedin.com/posts/ccc-uni_ganadores-ccctf-activity-7400009262397296640-Y7CB",
         "cert_link": "",
         "writeup_link": ""
@@ -212,18 +235,72 @@
         "name": "Black Alpaca CTF 2025",
         "year": "Noviembre 2025",
         "platform": "Black Alpaca",
-        "rank": "Puesto 5",
+        "rank": "En equipo - Puesto 5",
         "event_link": "https://www.linkedin.com/posts/black-alpaca_lleg%C3%B3-el-ctf-de-black-alpaca-prep%C3%A1rate-activity-7394889793672957952-9HF2",
         "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "CTF CAUC",
+        "year": "Noviembre 2025",
+        "platform": "Comunidad Arequipeña de Ciberseguridad CAUC",
+        "rank": "Individual - Puesto 3",
+        "event_link": "https://www.linkedin.com/posts/gjnv_ctf-ciberseguridad-ethicalhacking-activity-7393648674481909761-OzMW",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "Rootwars 2025",
+        "year": "Octubre 2025",
+        "platform": "enHacke",
+        "rank": "Individual - Puesto 11",
+        "event_link": "",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "The Weekend Hack 2025 CTF",
+        "year": "Septiembre 2025",
+        "platform": "IEEE Computer Society UPC",
+        "rank": "En equipo - Puesto 51",
+        "event_link": "https://www.linkedin.com/posts/upc-hack-the-box_hxploitupc-cyberapocalypse2025-ctf-ugcPost-7311032101070422019-Urxt",
+        "cert_link": "https://drive.google.com/file/d/1v1x9pHbennH40JxX1H07as7u_-A_rRnn/view?usp=sharing",
+        "writeup_link": ""
+      },
+      {
+        "name": "Kaspersky CTF 2025",
+        "year": "Agosto 2025",
+        "platform": "Kaspersky",
+        "rank": "En equipo - Puesto 9",
+        "event_link": "https://www.linkedin.com/posts/hxploitabrupc-ciberseguridadcompetitivaabrupc-ugcPost-7373736739192098816-iX4M",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "World Wide CTF 2025",
+        "year": "Julio 2025",
+        "platform": "World Wide Flags",
+        "rank": "En equipo - Puesto 19",
+        "event_link": "https://www.linkedin.com/posts/overpwnz_overpwnz-capturetheflag-worldwidectf-ugcPost-7355581493840125952-8oW9",
+        "cert_link": "https://drive.google.com/file/d/1tbDky8vXXflyi31Qq5lVgHt7Qd2TuphC/view?usp=sharing",
         "writeup_link": ""
       },
       {
         "name": "Hack The Box: Cyber Apocalypse 2025",
         "year": "Enero 2025",
         "platform": "Hack The Box",
-        "rank": "Puesto 51",
-        "event_link": "https://ctf.hackthebox.com/event/details/cyber-apocalypse-ctf-2025-tales-from-eldoria-2107",
+        "rank": "En equipo - Puesto 51",
+        "event_link": "https://www.linkedin.com/posts/upc-hack-the-box_hxploitupc-cyberapocalypse2025-ctf-ugcPost-7311032101070422019-Urxt",
         "cert_link": "https://drive.google.com/file/d/1v1x9pHbennH40JxX1H07as7u_-A_rRnn/view?usp=sharing",
+        "writeup_link": ""
+      },
+      {
+        "name": "Duelo de Sedes",
+        "year": "Noviembre 2024",
+        "platform": "UPC Hack The Box",
+        "rank": "Individual - Puesto 2",
+        "event_link": "https://www.linkedin.com/posts/upc-hack-the-box_duelodesedes-hackthebox-upc-activity-7267022165705691141-1SJX",
+        "cert_link": "",
         "writeup_link": ""
       }
     ],
@@ -233,13 +310,18 @@
         "degree": "Ingeniería de Sistemas de Información",
         "period": "2021 - Actualidad (9no Ciclo)",
         "image": "img/edu/upc.png",
-        "notes": ["Cursos clave: Seguridad, Arquitectura, Sistemas", "Proyectos de backend e investigación"]
+        "notes": [
+          "Formación enfocada en seguridad, arquitectura y sistemas.",
+          "Proyectos backend y aplicaciones web con autenticación y APIs.",
+          "Trabajo en equipo, presentación de resultados y documentación técnica.",
+          "Interés aplicado en AppSec, redes e infraestructura segura."
+        ]
       }
     ],
     "interests": [
       "Seguridad ofensiva y AppSec",
-      "Arquitectura de software y sistemas robustos",
-      "Cloud security y automatización",
+      "Infraestructura segura, redes y hardening",
+      "Cloud security, DevSecOps y automatización",
       "Risk / compliance aplicado a seguridad",
       "Mentoría y comunidad técnica"
     ]
@@ -260,22 +342,23 @@
       "buttons": {
         "download_cv": "Download CV",
         "repo": "Repo",
-        "repo_frontend": "FE Repo",
-        "repo_backend": "BE Repo",
+        "repo_frontend": "Frontend",
+        "repo_backend": "Backend",
         "view_demo": "Demo",
         "view_more": "View more",
         "open_link": "Open",
-        "back_to_top": "Top"
+        "back_to_top": "Top",
+        "cert": "Certificate",
+        "writeup": "Writeup"
       },
       "labels": {
         "target_role": "Target role",
-        "labs_solved": "Labs solved",
         "availability": "Availability",
         "location": "Location",
         "spoken_languages": "Languages"
       },
       "section_titles": {
-        "quick_facts": "Quick facts",
+        "quick_facts": "Details",
         "interests": "Professional Interests",
         "skills": "Skills & Tools",
         "experience": "Experience",
@@ -284,35 +367,39 @@
         "certs": "Certifications",
         "ctfs": "CTFs & Achievements",
         "education": "Education"
+      },
+      "ctf": {
+        "mode_individual": "Individual",
+        "mode_team": "Team",
+        "place": "Place"
       }
     },
     "hero": {
       "name": "Guido Joel Navarro Vasquez",
-      "role": "Cybersecurity Engineer & Backend Dev",
-      "summary": "I’m a 9th-semester Information Systems Engineering student at Universidad Peruana de Ciencias Aplicadas (UPC), focused on cybersecurity with a strong interest in offensive security, AppSec, and governance/risk (GRC). I have hands-on experience in backend development with Node.js/TypeScript and supporting ISO 27001-aligned initiatives, blending technical analysis with clear documentation and cross-team communication. Alongside that, I actively solve CTFs and labs, produce technical content, and do mentoring. I’m targeting SOC/AppSec/GRC roles where I can contribute analytical thinking, consistency, and soft skills such as teamwork and clear communication.",
+      "role": "Information Systems Engineering & Backend Dev",
+      "summary": "I’m a 9th-semester Information Systems Engineering student at Universidad Peruana de Ciencias Aplicadas (UPC), focused on cybersecurity with a strong interest in offensive security, AppSec, and governance/risk (GRC). I have hands-on experience in backend development with Node.js/TypeScript, payment gateway integrations, and supporting ISO 27001-aligned initiatives, combining technical analysis with clear documentation and cross-team communication. In parallel, I actively participate in CTFs, mentor others, and keep consistent lab practice. I’m aiming for SOC/AppSec/GRC roles where I can contribute analytical thinking, discipline, and soft skills such as teamwork and clear communication.",
       "highlights": [
-        "Focus: offensive + secure development",
-        "CTFs / Labs (HTB, CTFTime)",
-        "Backend (Node.js/TS) + ISO 27001 support"
+        "Focus: offensive security + secure development (AppSec)",
+        "Backend: REST APIs, JWT, architecture and best practices",
+        "Payment gateways: integrations, validations and idempotency",
+        "Cloud/Infra: Docker, networking, hardening and secure services",
+        "GRC basics: ISO 27001 support, evidence and controls",
+        "Competitive CTFs and active community involvement"
       ]
     },
     "skills": {
       "groups": [
         {
-          "label": "Languages",
-          "items": ["Python", "JavaScript/TypeScript", "C#", "SQL", "C"]
-        },
-        {
           "label": "Frameworks & Technologies",
-          "items": ["Spring Boot", ".NET", "Angular", "Express.js", "Flask", "Entity Framework", "DDD", "REST APIs"]
+          "items": ["Spring Boot", ".NET", "Angular", "Express.js", "Flask", "Entity Framework", "DDD", "REST APIs", "JWT"]
         },
         {
           "label": "Offensive Security",
-          "items": ["Web pentesting", "Infrastructure pentesting", "SQLi", "XSS", "LFI", "SSRF", "IDOR", "RCE", "PrivEsc", "Pivoting", "Post-exploitation", "Insecure config analysis"]
+          "items": ["Web pentesting", "Infrastructure pentesting", "SQLi", "XSS", "LFI", "SSRF", "IDOR", "RCE", "PrivEsc", "Pivoting", "Post-exploitation", "Insecure configuration analysis"]
         },
         {
           "label": "AppSec",
-          "items": ["OWASP Top 10", "Vulnerability reporting", "Risk/Severity", "Secure SDLC (basic)"]
+          "items": ["OWASP Top 10", "Vulnerability reporting", "Risk/Severity", "Basic application hardening", "API security controls"]
         },
         {
           "label": "Systems & Environments",
@@ -320,7 +407,7 @@
         },
         {
           "label": "Infrastructure & Networking",
-          "items": ["TCP/IP", "DNS", "VPN", "Firewalls", "Proxies", "Load balancers", "HTTPS", "SSH", "SSL/TLS"]
+          "items": ["TCP/IP", "DNS", "VPN", "Firewalls", "Proxies", "Load Balancers", "HTTPS", "SSH", "SSL/TLS"]
         },
         {
           "label": "Cloud & DevSecOps",
@@ -339,10 +426,12 @@
         "period": "Jun 2025 - Jan 2026",
         "bullets": [
           "Backend development with Node.js/TypeScript and REST APIs.",
+          "Payment gateway integrations: transaction flows, validations, error handling and idempotency.",
           "Support for ISO 27001-aligned initiatives (evidence, controls, documentation).",
-          "Team workflows with Git/GitHub, CI/CD and containers."
+          "Team workflows with Git/GitHub, CI/CD and containers.",
+          "XDR Proof of Concept (PoC): defined evaluation criteria (coverage, detection capability, false-positive rate), executed controlled tests, and delivered a comparative report to support a technical decision."
         ],
-        "tags": ["Backend", "Node.js", "ISO 27001"]
+        "tags": ["Backend", "Node.js", "Payments", "ISO 27001", "DDD"]
       }
     ],
     "activities": [
@@ -384,7 +473,7 @@
         "tech": ["Cloudflare", "Docker", "Linux", "Azure"],
         "desc": "Deployed a CTF environment for 100+ players with TLS, custom domain and containers. Capacity and continuity decisions.",
         "status": "Finished",
-        "image": "img/projects/ctf-infra.png",
+        "image": "img/projects/comsocctf.png",
         "links": {
           "repo": "",
           "demo": "",
@@ -393,11 +482,11 @@
       },
       {
         "title": "StyleCheck",
-        "year": "2024",
-        "tech": ["HTML", "CSS", "JavaScript"],
-        "desc": "Dynamic portfolio with ES/EN i18n, cards, and JSON-driven rendering.",
+        "year": "2023",
+        "tech": ["Spring Boot", "Angular", "PostgreSQL", "JWT"],
+        "desc": "Web application with JWT authentication that simulates hairstyle styles from a face photo. Spring Boot backend, Angular frontend, and PostgreSQL database.",
         "status": "Finished",
-        "image": "img/projects/stylecheck.png",
+        "image": "img/projects/stylecheck_front.png",
         "links": {
           "repo_frontend": "https://github.com/Alpasec/LandingPageArquiWebG6",
           "repo_backend": "https://github.com/Alpasec/Trabajo-G06",
@@ -407,26 +496,115 @@
       }
     ],
     "certs": [
-      { "name": "FCE Cambridge English Level 1 Certificate", "issuer": "Cambridge English", "date": "2020-01", "image": "img/certs/fce.png", "link": "#" },
-      { "name": "Junior Penetration Tester (PT1)", "issuer": "TryHackMe", "date": "2025-08", "image": "img/certs/pt1.png", "link": "#" },
-      { "name": "Certified Professional Penetration Tester", "issuer": "INE Security", "date": "2025-06", "image": "img/certs/cppt.png", "link": "#" },
-      { "name": "INE Certified Cloud Associate", "issuer": "INE Security", "date": "2025-03", "image": "img/certs/ine-cloud.png", "link": "#" },
-      { "name": "Junior Penetration Tester", "issuer": "INE Security", "date": "2025-02", "image": "img/certs/ejpt.png", "link": "#" },
-      { "name": "Cybersecurity: CyberSOC (C|CS)", "issuer": "CTIC UNI", "date": "2025-02", "image": "img/certs/cybersoc.png", "link": "#" },
-      { "name": "ISO 27001 Auditor Bootcamp", "issuer": "Hackermentor", "date": "2024-12", "image": "img/certs/iso27001.png", "link": "#" },
-      { "name": "Cybersecurity: Ethical Hacking", "issuer": "CTIC UNI", "date": "2024-11", "image": "img/certs/ethical-hacking.png", "link": "#" },
-      { "name": "Cybersecurity: Web App Pentesting", "issuer": "CTIC UNI", "date": "2024-11", "image": "img/certs/web-pentesting.png", "link": "#" },
-      { "name": "Scrum Fundamentals Certified (SFC)", "issuer": "SCRUMstudy", "date": "2023-06", "image": "img/certs/sfc.png", "link": "#" },
-      { "name": "MCRTA", "issuer": "CWL", "image": "img/certs/crta.png", "link": "#" },
-      { "name": "CRTA", "issuer": "CWL", "image": "img/certs/mcrta.png", "link": "#" }
+      { "name": "Certified Red Team Analyst", "issuer": "CyberWarFare Labs", "date": "2026-01", "image": "img/certs/crta.png", "link": "https://labs.cyberwarfare.live/credential/achievement/6957191de40b6b5c463d2106" },
+      { "name": "Multi-Cloud Red Teaming Analyst", "issuer": "CyberWarFare Labs", "date": "2025-12", "image": "img/certs/mcrta.png", "link": "https://labs.cyberwarfare.live/credential/achievement/694e305a10dcee13b435323e" },
+      { "name": "Junior Penetration Tester (PT1)", "issuer": "TryHackMe", "date": "2025-08", "image": "img/certs/pt1.png", "link": "https://assets.tryhackme.com/certification-certificate/68a93c613d7aff6e4bdedd82.pdf" },
+      { "name": "Certified Professional Penetration Tester", "issuer": "INE Security", "date": "2025-06", "image": "img/certs/ecppt.svg", "link": "https://certs.ine.com/fcacbb80-bdd7-41ed-a98b-8803b0483dd9?record_view=true" },
+      { "name": "INE Certified Cloud Associate", "issuer": "INE Security", "date": "2025-03", "image": "img/certs/icca.webp", "link": "https://certs.ine.com/f65a977c-8c8b-4357-97ba-eabcb7301a4a" },
+      { "name": "Junior Penetration Tester", "issuer": "INE Security", "date": "2025-02", "image": "img/certs/ejpt.svg", "link": "https://certs.ine.com/2f67cf53-cf23-47ef-a776-75b662d775bc" },
+      { "name": "Cybersecurity: CyberSOC (C|CS)", "issuer": "CTIC UNI", "date": "2025-02", "image": "img/certs/otiuni.jpg", "link": "https://certificados.uni.edu.pe/verificador/search.php?cert_id=cert_1f451a6461c5fc24f2efd908fae2b8cf" },
+      { "name": "ISO 27001 Auditor Bootcamp", "issuer": "Hackermentor", "date": "2024-12", "image": "img/certs/hackermentor.jpg", "link": "https://credsverse.com/credentials/dde301ad-a676-4d46-8101-3dd5265f9eca" },
+      { "name": "Cybersecurity: Ethical Hacking", "issuer": "CTIC UNI", "date": "2024-11", "image": "img/certs/otiuni.jpg", "link": "#" },
+      { "name": "Cybersecurity: Web App Pentesting", "issuer": "CTIC UNI", "date": "2024-11", "image": "img/certs/otiuni.jpg", "link": "#" },
+      { "name": "FCE Cambridge English Level 1 Certificate", "issuer": "Cambridge English", "date": "2020-01", "image": "img/certs/cambridge.webp", "link": "https://drive.google.com/file/d/1q5wVjKNpPMBs2FtyOO5Uz0qF_KNgICaa/view?usp=sharing" }
     ],
     "ctfs": [
       {
+        "name": "Fluid Attacks Reto Latam 2026",
+        "year": "January 2026",
+        "platform": "Fluid Attacks",
+        "rank": "Individual - Place 51",
+        "event_link": "https://www.linkedin.com/posts/gjnv_glad-to-share-my-result-from-the-fluid-attacks-activity-7421321157439557632-OffR",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "University CTF 2025: Tinsel Trouble",
+        "year": "December 2025",
+        "platform": "Hack The Box",
+        "rank": "Team - Place 18",
+        "event_link": "https://ctf.hackthebox.com/event/details/university-ctf-2025-tinsel-trouble-2993",
+        "cert_link": "https://drive.google.com/file/d/19yzmcOqDTM_MaLwo9A02mF0G_mPrOmsk/view?usp=sharing",
+        "writeup_link": ""
+      },
+      {
+        "name": "CCCTF 2025",
+        "year": "November 2025",
+        "platform": "Centro Cultural de Ciberseguridad UNI",
+        "rank": "Team - Place 4",
+        "event_link": "https://www.linkedin.com/posts/ccc-uni_ganadores-ccctf-activity-7400009262397296640-Y7CB",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "Black Alpaca CTF 2025",
+        "year": "November 2025",
+        "platform": "Black Alpaca",
+        "rank": "Team - Place 5",
+        "event_link": "https://www.linkedin.com/posts/black-alpaca_lleg%C3%B3-el-ctf-de-black-alpaca-prep%C3%A1rate-activity-7394889793672957952-9HF2",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "CTF CAUC",
+        "year": "November 2025",
+        "platform": "CAUC",
+        "rank": "Individual - Place 3",
+        "event_link": "https://www.linkedin.com/posts/gjnv_ctf-ciberseguridad-ethicalhacking-activity-7393648674481909761-OzMW",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "Rootwars 2025",
+        "year": "October 2025",
+        "platform": "enHacke",
+        "rank": "Individual - Place 11",
+        "event_link": "",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "The Weekend Hack 2025 CTF",
+        "year": "September 2025",
+        "platform": "IEEE Computer Society UPC",
+        "rank": "Team - Place 51",
+        "event_link": "https://www.linkedin.com/posts/upc-hack-the-box_hxploitupc-cyberapocalypse2025-ctf-ugcPost-7311032101070422019-Urxt",
+        "cert_link": "https://drive.google.com/file/d/1v1x9pHbennH40JxX1H07as7u_-A_rRnn/view?usp=sharing",
+        "writeup_link": ""
+      },
+      {
+        "name": "Kaspersky CTF 2025",
+        "year": "August 2025",
+        "platform": "Kaspersky",
+        "rank": "Team - Place 9",
+        "event_link": "https://www.linkedin.com/posts/hxploitabrupc-ciberseguridadcompetitivaabrupc-ugcPost-7373736739192098816-iX4M",
+        "cert_link": "",
+        "writeup_link": ""
+      },
+      {
+        "name": "World Wide CTF 2025",
+        "year": "July 2025",
+        "platform": "World Wide Flags",
+        "rank": "Team - Place 19",
+        "event_link": "https://www.linkedin.com/posts/overpwnz_overpwnz-capturetheflag-worldwidectf-ugcPost-7355581493840125952-8oW9",
+        "cert_link": "https://drive.google.com/file/d/1tbDky8vXXflyi31Qq5lVgHt7Qd2TuphC/view?usp=sharing",
+        "writeup_link": ""
+      },
+      {
         "name": "Hack The Box: Cyber Apocalypse 2025",
-        "year": "2025",
-        "platform": "CTFTime",
-        "rank": "Top 1% (Rank 51/8130)",
-        "event_link": "https://ctftime.org/...",
+        "year": "January 2025",
+        "platform": "Hack The Box",
+        "rank": "Team - Place 51",
+        "event_link": "https://www.linkedin.com/posts/upc-hack-the-box_hxploitupc-cyberapocalypse2025-ctf-ugcPost-7311032101070422019-Urxt",
+        "cert_link": "https://drive.google.com/file/d/1v1x9pHbennH40JxX1H07as7u_-A_rRnn/view?usp=sharing",
+        "writeup_link": ""
+      },
+      {
+        "name": "Duelo de Sedes",
+        "year": "November 2024",
+        "platform": "UPC Hack The Box",
+        "rank": "Individual - Place 2",
+        "event_link": "https://www.linkedin.com/posts/upc-hack-the-box_duelodesedes-hackthebox-upc-activity-7267022165705691141-1SJX",
         "cert_link": "",
         "writeup_link": ""
       }
@@ -437,13 +615,18 @@
         "degree": "Information Systems Engineering",
         "period": "2021 - Present (9th semester)",
         "image": "img/edu/upc.png",
-        "notes": ["Key courses: Security, Architecture, Systems", "Backend + research projects"]
+        "notes": [
+          "Curriculum focused on security, architecture, and systems.",
+          "Backend and web projects with authentication and APIs.",
+          "Teamwork, results presentation, and technical documentation.",
+          "Applied interest in AppSec, networking, and secure infrastructure."
+        ]
       }
     ],
     "interests": [
       "Offensive security and AppSec",
-      "Software architecture and robust systems",
-      "Cloud security and automation",
+      "Secure infrastructure, networking, and hardening",
+      "Cloud security, DevSecOps, and automation",
       "Risk / compliance applied to security",
       "Mentoring and technical community"
     ]

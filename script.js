@@ -16,19 +16,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderLanguage(currentLang);
   });
 
-  // Mobile menu
   const mobileToggle = document.getElementById("mobile-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   mobileToggle.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
 
-  // Close mobile menu on link click
   document.getElementById("mobile-links").addEventListener("click", (e) => {
     if (e.target.tagName.toLowerCase() === "a") mobileMenu.classList.add("hidden");
   });
 
-  // Back to top
   const backBtn = document.getElementById("back-to-top");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 600) backBtn.classList.remove("hidden");
@@ -46,23 +43,20 @@ async function fetchData(url) {
 }
 
 function loadStaticData() {
-  // Brand
   document.getElementById("brand").textContent = data.settings.brand || "<GN/>";
   document.getElementById("footer-brand").textContent = data.settings.brand || "<GN/>";
 
-  // Profile
   document.getElementById("profile-img").src = data.settings.profile_image || "";
   document.getElementById("profile-name").textContent = data.settings.profile_name || "";
   document.getElementById("footer-name").textContent = data.settings.profile_name || "Portfolio";
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // CV
   const cv = document.getElementById("btn-cv");
   cv.href = data.settings.cv_link || "#";
 
-  // Socials (header + footer)
   renderSocials("social-icons");
   renderSocials("footer-contact", true);
+  renderContactMini("contact-mini");
 }
 
 function renderLanguage(lang) {
@@ -76,21 +70,18 @@ function renderLanguage(lang) {
 
   renderNav(ui.nav);
 
-  // HERO
   setText("hero-name", t.hero.name);
   setText("hero-role", t.hero.role);
   setText("hero-summary", t.hero.summary);
   setText("profile-sub", t.hero.role);
 
-  document.getElementById("target-pill").textContent =
-    `${ui.labels.target_role}: ${data.stats.target_role}`;
+  document.getElementById("target-pill").textContent = `${ui.labels.target_role}: ${data.stats.target_role}`;
 
   const hl = document.getElementById("hero-highlights");
   hl.innerHTML = (t.hero.highlights || []).map(x => `<li>${escapeHtml(x)}</li>`).join("");
 
   setText("btn-cv", ui.buttons.download_cv);
 
-  // Titles
   setText("title-quickfacts", ui.section_titles.quick_facts);
   setText("title-interests", ui.section_titles.interests);
   setText("title-skills", ui.section_titles.skills);
@@ -101,36 +92,19 @@ function renderLanguage(lang) {
   setText("title-ctfs", ui.section_titles.ctfs);
   setText("title-edu", ui.section_titles.education);
 
-  // Quick facts
-  renderQuickFacts(ui);
-
-  // Interests (moved to top)
+  renderQuickFacts(ui, lang);
   renderTags("list-interests", t.interests || []);
-
-  // Skills
   renderSkillGroups(t.skills?.groups || []);
-
-  // Experience & Activities (bullets supported)
   renderTimeline("list-experience", t.experience || []);
   renderTimeline("list-activities", t.activities || []);
-
-  // Projects (support 2 repos)
   renderProjects("list-projects", t.projects || [], ui);
-
-  // Certs (sort by date desc)
-  const certsSorted = (t.certs || []).slice().sort((a, b) => compareCertDates(b, a));
-  renderCerts("list-certs", certsSorted, lang);
-
-  // CTFs (sort by year desc)
-  renderCTFs("list-ctfs", (t.ctfs || []).slice().sort((a,b) => (+b.year || 0) - (+a.year || 0)), ui);
-
-  // Education
+  renderCerts("list-certs", t.certs || [], lang);
+  renderCTFs("list-ctfs", t.ctfs || [], ui, lang);
   renderEducation("list-education", t.education || []);
 
   document.getElementById("back-to-top").title = ui.buttons.back_to_top;
 }
 
-/* NAV */
 function renderNav(navItems) {
   const nav = document.getElementById("nav-links");
   const mobile = document.getElementById("mobile-links");
@@ -146,7 +120,6 @@ function renderNav(navItems) {
     .join("");
 }
 
-/* SOCIALS */
 function renderSocials(containerId, compact = false) {
   const el = document.getElementById(containerId);
   if (!el) return;
@@ -175,18 +148,42 @@ function renderSocials(containerId, compact = false) {
   });
 }
 
-/* QUICK FACTS */
-function renderQuickFacts(ui) {
+function renderContactMini(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  const items = [
+    { key: "email", icon: "fa-solid fa-envelope", text: data.contact.email, href: `mailto:${data.contact.email}` },
+    { key: "phone", icon: "fa-solid fa-phone", text: data.contact.phone, href: `tel:${data.contact.phone}` },
+    { key: "linkedin", icon: "fa-brands fa-linkedin", text: "LinkedIn", href: data.contact.linkedin },
+    { key: "github", icon: "fa-brands fa-github", text: "GitHub", href: data.contact.github }
+  ];
+
+  el.innerHTML = items.map(i => `
+    <a class="contact-mini-item" href="${escapeAttr(i.href)}" target="_blank" rel="noopener">
+      <i class="${escapeHtml(i.icon)}"></i>
+      <span>${escapeHtml(i.text)}</span>
+    </a>
+  `).join("");
+}
+
+function renderQuickFacts(ui, lang) {
   const facts = document.getElementById("quick-facts");
-  const spoken = (data.stats.spoken_languages || []).join(" · ");
+  const spoken = resolveSpokenLanguages(lang).join(" · ");
 
   facts.innerHTML = `
     ${factRow("fa-solid fa-location-dot", ui.labels.location, data.stats.location)}
     ${factRow("fa-solid fa-circle-check", ui.labels.availability, data.stats.availability)}
     ${factRow("fa-solid fa-crosshairs", ui.labels.target_role, data.stats.target_role)}
-    ${factRow("fa-solid fa-flask", ui.labels.labs_solved, data.stats.labs_solved)}
     ${factRow("fa-solid fa-language", ui.labels.spoken_languages, spoken)}
   `;
+}
+
+function resolveSpokenLanguages(lang) {
+  const sl = data.stats.spoken_languages;
+  if (Array.isArray(sl)) return sl;
+  if (sl && typeof sl === "object") return sl[lang] || sl.es || [];
+  return [];
 }
 
 function factRow(icon, key, val) {
@@ -201,7 +198,6 @@ function factRow(icon, key, val) {
   `;
 }
 
-/* SKILLS */
 function renderSkillGroups(groups) {
   const el = document.getElementById("skills-groups");
   el.innerHTML = groups.map(g => `
@@ -214,7 +210,6 @@ function renderSkillGroups(groups) {
   `).join("");
 }
 
-/* TIMELINE (bullets) */
 function renderTimeline(id, items) {
   const el = document.getElementById(id);
   el.innerHTML = items.map(i => {
@@ -241,7 +236,6 @@ function renderTimeline(id, items) {
   }).join("");
 }
 
-/* PROJECTS (2 repos) */
 function renderProjects(id, projects, ui) {
   const el = document.getElementById(id);
   el.innerHTML = projects.map(p => {
@@ -266,25 +260,11 @@ function renderProjects(id, projects, ui) {
           <div class="tag-cloud" style="margin-top:10px">${techs}</div>
 
           <div class="project-actions">
-            ${repo ? `<a class="btn-ghost btn-accent" href="${escapeAttr(repo)}" target="_blank" rel="noopener">
-              <i class="fa-brands fa-github"></i> ${escapeHtml(ui.buttons.repo)}
-            </a>` : ""}
-
-            ${repoFE ? `<a class="btn-ghost btn-accent" href="${escapeAttr(repoFE)}" target="_blank" rel="noopener">
-              <i class="fa-brands fa-github"></i> ${escapeHtml(ui.buttons.repo_frontend)}
-            </a>` : ""}
-
-            ${repoBE ? `<a class="btn-ghost btn-accent" href="${escapeAttr(repoBE)}" target="_blank" rel="noopener">
-              <i class="fa-brands fa-github"></i> ${escapeHtml(ui.buttons.repo_backend)}
-            </a>` : ""}
-
-            ${demo ? `<a class="btn-ghost" href="${escapeAttr(demo)}" target="_blank" rel="noopener">
-              <i class="fa-solid fa-globe"></i> ${escapeHtml(ui.buttons.view_demo)}
-            </a>` : ""}
-
-            ${more ? `<a class="btn-ghost" href="${escapeAttr(more)}" target="_blank" rel="noopener">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> ${escapeHtml(ui.buttons.view_more)}
-            </a>` : ""}
+            ${repo ? `<a class="btn-ghost btn-accent" href="${escapeAttr(repo)}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> ${escapeHtml(ui.buttons.repo)}</a>` : ""}
+            ${repoFE ? `<a class="btn-ghost btn-accent" href="${escapeAttr(repoFE)}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> ${escapeHtml(ui.buttons.repo_frontend)}</a>` : ""}
+            ${repoBE ? `<a class="btn-ghost btn-accent" href="${escapeAttr(repoBE)}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> ${escapeHtml(ui.buttons.repo_backend)}</a>` : ""}
+            ${demo ? `<a class="btn-ghost" href="${escapeAttr(demo)}" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> ${escapeHtml(ui.buttons.view_demo)}</a>` : ""}
+            ${more ? `<a class="btn-ghost" href="${escapeAttr(more)}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${escapeHtml(ui.buttons.view_more)}</a>` : ""}
           </div>
         </div>
       </article>
@@ -292,7 +272,6 @@ function renderProjects(id, projects, ui) {
   }).join("");
 }
 
-/* CERTS (date format + sort) */
 function renderCerts(id, certs, lang) {
   const el = document.getElementById(id);
 
@@ -311,18 +290,7 @@ function renderCerts(id, certs, lang) {
   }).join("");
 }
 
-function compareCertDates(a, b) {
-  // a,b objects. Want descending by date (YYYY-MM). Missing date goes last.
-  const da = (a.date || "").trim();
-  const db = (b.date || "").trim();
-  if (!da && !db) return 0;
-  if (!da) return 1;
-  if (!db) return -1;
-  return db.localeCompare(da);
-}
-
 function formatYM(ym, lang) {
-  // ym: "YYYY-MM"
   const [y, m] = String(ym).split("-");
   const monthIndex = Math.max(1, Math.min(12, parseInt(m || "1", 10))) - 1;
   const monthsES = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
@@ -331,13 +299,17 @@ function formatYM(ym, lang) {
   return `${mm} ${y}`;
 }
 
-/* CTFS */
-function renderCTFs(id, ctfs, ui) {
+function renderCTFs(id, ctfs, ui, lang) {
   const el = document.getElementById(id);
+  const ctfUi = ui.ctf || {};
   el.innerHTML = ctfs.map(c => {
     const event = c.event_link?.trim();
     const cert = c.cert_link?.trim();
     const writeup = c.writeup_link?.trim();
+
+    const parsed = parseCtfRank(c.rank || "", ctfUi, lang);
+    const modeBadge = parsed.mode ? `<span class="ctf-badge mode">${escapeHtml(parsed.mode)}</span>` : "";
+    const placeBadge = parsed.place ? `<span class="ctf-badge place"><i class="fa-solid fa-ranking-star"></i> ${escapeHtml(parsed.place)}</span>` : "";
 
     return `
       <div class="ctf-card">
@@ -349,27 +321,56 @@ function renderCTFs(id, ctfs, ui) {
           <span class="chip">${escapeHtml(c.year || "")}</span>
         </div>
 
-        <div class="ctf-rank">${escapeHtml(c.rank || "")}</div>
+        <div class="ctf-rankline">
+          ${modeBadge}
+          ${placeBadge}
+          ${parsed.extra ? `<span class="ctf-extra">${escapeHtml(parsed.extra)}</span>` : ""}
+        </div>
 
         <div class="ctf-actions">
-          ${event ? `<a class="btn-ghost btn-accent" href="${escapeAttr(event)}" target="_blank" rel="noopener">
-            <i class="fa-solid fa-trophy"></i> ${escapeHtml(ui.buttons.open_link)}
-          </a>` : ""}
-
-          ${cert ? `<a class="btn-ghost" href="${escapeAttr(cert)}" target="_blank" rel="noopener">
-            <i class="fa-solid fa-certificate"></i> Cert
-          </a>` : ""}
-
-          ${writeup ? `<a class="btn-ghost" href="${escapeAttr(writeup)}" target="_blank" rel="noopener">
-            <i class="fa-solid fa-pen-to-square"></i> Writeup
-          </a>` : ""}
+          ${event ? `<a class="btn-ghost btn-accent" href="${escapeAttr(event)}" target="_blank" rel="noopener"><i class="fa-solid fa-trophy"></i> ${escapeHtml(ui.buttons.open_link)}</a>` : ""}
+          ${cert ? `<a class="btn-ghost" href="${escapeAttr(cert)}" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> ${escapeHtml(ui.buttons.cert)}</a>` : ""}
+          ${writeup ? `<a class="btn-ghost" href="${escapeAttr(writeup)}" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square"></i> ${escapeHtml(ui.buttons.writeup)}</a>` : ""}
         </div>
       </div>
     `;
   }).join("");
 }
 
-/* EDUCATION */
+function parseCtfRank(rank, ctfUi, lang) {
+  const raw = String(rank || "").trim();
+  if (!raw) return { mode: "", place: "", extra: "" };
+
+  const parts = raw.split("-").map(x => x.trim()).filter(Boolean);
+  if (parts.length === 1) return { mode: "", place: parts[0], extra: "" };
+
+  const modeRaw = parts[0].toLowerCase();
+  const placeRaw = parts.slice(1).join(" - ").trim();
+
+  const isTeam = modeRaw.includes("equipo") || modeRaw.includes("team");
+  const mode = isTeam ? (ctfUi.mode_team || "Team") : (ctfUi.mode_individual || "Individual");
+
+  const normalizedPlace = normalizePlace(placeRaw, ctfUi, lang);
+
+  return { mode, place: normalizedPlace, extra: "" };
+}
+
+function normalizePlace(placeRaw, ctfUi, lang) {
+  const p = String(placeRaw || "").trim();
+  if (!p) return "";
+
+  const isES = lang === "es";
+  const label = ctfUi.place || (isES ? "Puesto" : "Place");
+
+  const m = p.match(/(puesto|place)\s*([0-9]+)/i);
+  if (m) return `${label} ${m[2]}`;
+
+  const n = p.match(/([0-9]+)/);
+  if (n && (p.toLowerCase().includes("puesto") || p.toLowerCase().includes("place"))) return `${label} ${n[1]}`;
+
+  return p;
+}
+
 function renderEducation(id, items) {
   const el = document.getElementById(id);
   el.innerHTML = items.map(e => {
@@ -388,13 +389,11 @@ function renderEducation(id, items) {
   }).join("");
 }
 
-/* TAGS */
 function renderTags(id, tags) {
   const el = document.getElementById(id);
   el.innerHTML = tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
 }
 
-/* HELPERS */
 function setText(id, text) {
   const el = document.getElementById(id);
   if (el) el.textContent = text || "";
@@ -413,7 +412,6 @@ function escapeAttr(str) {
   return escapeHtml(str);
 }
 
-/* Active nav highlight */
 let sectionObserver = null;
 
 function setupActiveNavObserver() {
